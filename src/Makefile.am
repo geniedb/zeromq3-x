@@ -29,7 +29,11 @@ libzmq_la_SOURCES = \
     ipc_address.hpp \
     ipc_connecter.hpp \
     ipc_listener.hpp \
+    i_decoder.hpp \
+    i_encoder.hpp \
     i_engine.hpp \
+    i_msg_sink.hpp \
+    i_msg_source.hpp \
     i_poll_events.hpp \
     kqueue.hpp \
     lb.hpp \
@@ -71,6 +75,9 @@ libzmq_la_SOURCES = \
     tcp_listener.hpp \
     thread.hpp \
     trie.hpp \
+    v1_decoder.hpp \
+    v1_encoder.hpp \
+    v1_protocol.hpp \
     windows.hpp \
     wire.hpp \
     xpub.hpp \
