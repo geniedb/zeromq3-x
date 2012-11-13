@@ -1,6 +1,6 @@
-Name:          zeromq
+Name:          zeromq3
 Version:       @PACKAGE_VERSION@
-Release:       1%{?dist}
+Release:       2%{?dist}
 Summary:       The ZeroMQ messaging library
 Group:         Applications/Internet
 License:       LGPLv3+
@@ -90,7 +90,6 @@ This package contains ZeroMQ related development libraries and header files.
 %{_libdir}/libzmq.so.3
 %{_libdir}/libzmq.so.3.0.0
 
-%{_mandir}/man7/zmq.7.gz
 
 %files devel
 %defattr(-,root,root,-)
@@ -137,6 +136,7 @@ This package contains ZeroMQ related development libraries and header files.
 %{_mandir}/man3/zmq_strerror.3.gz
 %{_mandir}/man3/zmq_term.3.gz
 %{_mandir}/man3/zmq_version.3.gz
+%{_mandir}/man7/zmq.7.gz
 %{_mandir}/man7/zmq_epgm.7.gz
 %{_mandir}/man7/zmq_inproc.7.gz
 %{_mandir}/man7/zmq_ipc.7.gz
