@@ -60,7 +60,7 @@ extern "C" {
 /*  Version macros for compile-time API version detection                     */
 #define ZMQ_VERSION_MAJOR 3
 #define ZMQ_VERSION_MINOR 2
-#define ZMQ_VERSION_PATCH 1
+#define ZMQ_VERSION_PATCH 2
 
 #define ZMQ_MAKE_VERSION(major, minor, patch) \
     ((major) * 10000 + (minor) * 100 + (patch))
@@ -261,6 +261,7 @@ ZMQ_EXPORT int zmq_msg_set (zmq_msg_t *msg, int option, int optval);
 
 /*  Deprecated aliases                                                        */
 #define ZMQ_NOBLOCK ZMQ_DONTWAIT
+#define ZMQ_FAIL_UNROUTABLE ZMQ_ROUTER_MANDATORY
 #define ZMQ_ROUTER_BEHAVIOR ZMQ_ROUTER_MANDATORY
 
 /******************************************************************************/
@@ -380,15 +381,15 @@ typedef struct
 
 ZMQ_EXPORT int zmq_poll (zmq_pollitem_t *items, int nitems, long timeout);
 
-//  Built-in message proxy (3-way)
+/*  Built-in message proxy (3-way) */
 
 ZMQ_EXPORT int zmq_proxy (void *frontend, void *backend, void *capture);
 
-//  Deprecated aliases
+/*  Deprecated aliases */
 #define ZMQ_STREAMER 1
 #define ZMQ_FORWARDER 2
 #define ZMQ_QUEUE 3
-//  Deprecated method
+/*  Deprecated method */
 ZMQ_EXPORT int zmq_device (int type, void *frontend, void *backend);
 
 #undef ZMQ_EXPORT

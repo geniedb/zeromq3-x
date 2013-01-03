@@ -19,6 +19,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include "../include/zmq.h"
+#include "../include/zmq_utils.h"
 #include <errno.h>
 #include <stdlib.h>
 #include <string.h>
@@ -86,7 +87,7 @@ static void *server (void *)
     rc = zmq_term (context);
     assert (rc == 0);
 
-    pthread_exit(NULL);
+    return NULL;
 }
 
 static void *worker (void *)
@@ -129,7 +130,7 @@ static void *worker (void *)
     rc = zmq_term (context);
     assert (rc == 0);
 
-    pthread_exit(NULL);
+    return NULL;
 }
 
 int main (void)
@@ -148,7 +149,7 @@ int main (void)
     val = 0;
     rc = zmq_setsockopt(to, ZMQ_LINGER, &val, sizeof(val));
     assert (rc == 0);
-    rc = zmq_bind(to, "tcp://*:5555");
+    rc = zmq_bind(to, "tcp://*:6555");
     assert (rc == 0);
 
     // Create a socket pushing to two endpoints - only 1 message should arrive.
@@ -157,9 +158,9 @@ int main (void)
 
     val = 0;
     zmq_setsockopt (from, ZMQ_LINGER, &val, sizeof(val));
-    rc = zmq_connect (from, "tcp://localhost:5556");
+    rc = zmq_connect (from, "tcp://localhost:6556");
     assert (rc == 0);
-    rc = zmq_connect (from, "tcp://localhost:5555");
+    rc = zmq_connect (from, "tcp://localhost:6555");
     assert (rc == 0);
 
     for (int i = 0; i < 10; ++i)
@@ -170,7 +171,7 @@ int main (void)
         assert(rc >= 0);
     }
 
-    sleep(1);
+    zmq_sleep (1);
     seen = 0;
     for (int i = 0; i < 10; ++i)
     {
@@ -229,7 +230,7 @@ int main (void)
         assert (rc >= 0);
     }
 
-    sleep(1);
+    zmq_sleep (1);
 
     seen = 0;
     for (int i = 0; i < 10; ++i)
