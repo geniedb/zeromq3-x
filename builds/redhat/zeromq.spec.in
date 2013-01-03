@@ -102,8 +102,10 @@ This package contains ZeroMQ related development libraries and header files.
 %{_libdir}/libzmq.so
 
 %{_mandir}/man3/zmq_bind.3.gz
+%{_mandir}/man3/zmq_unbind.3.gz
 %{_mandir}/man3/zmq_close.3.gz
 %{_mandir}/man3/zmq_connect.3.gz
+%{_mandir}/man3/zmq_disconnect.3.gz
 %{_mandir}/man3/zmq_ctx_destroy.3.gz
 %{_mandir}/man3/zmq_ctx_get.3.gz
 %{_mandir}/man3/zmq_ctx_new.3.gz
